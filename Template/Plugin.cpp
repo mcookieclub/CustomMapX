@@ -673,7 +673,7 @@ bool isNextImage2(string name, string newname) {
 bool UseItemSupply(Player* sp, ItemStackBase& item, string itemname, short aux) {
 	auto& plinv = sp->getSupplies();
 	auto slotnum = dAccess<int, 16>(&plinv);
-	auto& uid = sp->getUniqueID();
+	auto& uid = sp->getOrCreateUniqueID();
 	if (item.getCount() == 0) {
 		auto& inv = sp->getInventory();
 		bool isgive = 0;
@@ -723,7 +723,7 @@ bool UseItemSupply(Player* sp, ItemStackBase& item, string itemname, short aux) 
 							}
 							if (isgive2) {
 								auto snbt = const_cast<ItemStack*>(&item)->getNbt()->toBinaryNBT();
-								auto& uid = sp->getUniqueID();
+								auto& uid = sp->getOrCreateUniqueID();
 								Schedule::delay([snbt, uid, slotnum, i] {
 								auto newitem = ItemStack::create(CompoundTag::fromBinaryNBT(snbt));
 								auto sp = Global<Level>->getPlayer(uid);

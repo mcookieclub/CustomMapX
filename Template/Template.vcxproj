@@ -60,25 +60,12 @@
       <DelayLoadDLLs>bedrock_server.dll</DelayLoadDLLs>
     </Link>
     <PreBuildEvent>
-      <Command>if not exist "$(SolutionDir)SDK\Lib\bedrock_server_api.lib" goto process
-if not exist "$(SolutionDir)SDK\Lib\bedrock_server_api.lib" goto process
-goto end
-
-:process
-cd /d "$(SolutionDir)\SDK\Tools\"
-if exist "$(LocalDebuggerWorkingDirectory)\bedrock_server.pdb" (
-LibraryBuilder.exe -o ..\Lib\ "$(LocalDebuggerWorkingDirectory)"
-) else (
-LibraryBuilder.exe -o ..\Lib\
-)
-
-:end
-			</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>if exist "$(LocalDebuggerWorkingDirectory)\plugins\" (
-copy /Y "$(TargetPath)" "$(LocalDebuggerWorkingDirectory)\plugins\"
-)</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
